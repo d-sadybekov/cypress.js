@@ -1,0 +1,20 @@
+describe("Testing Huntingpony.com", ()=>{
+  it("Add item to cart, increase quantity, checkout", ()=>{
+    cy.clearLocalStorage(/products_by_id/)
+    cy.visit(Cypress.env("host2"))
+    cy.get('[data-index="0"] > .header__collections-controls > .header__collections-link').scrollIntoView().click()
+    cy.get('.grid-list > [data-product-id]').eq(0).scrollIntoView().click()
+    //ожидание отрисовки селектора размеров
+    cy.get('.option-razmer > select').should('have.class','option-values form-control form-control_size-m')
+    cy.get('button[data-add-cart-counter-btn]').scrollIntoView().click()
+    cy.get('div > .micro-alert-item').should('be.visible')
+    cy.get('.add-cart-counter__detail-text').contains('В корзине ')
+    cy.get('[data-add-cart-counter-count]').contains('1')
+    cy.get('button[data-add-cart-counter-plus]').click()
+    cy.get('.add-cart-counter__detail-text').contains('В корзине ')
+    cy.get('[data-add-cart-counter-count]').contains('2')
+    cy.get("div > a[href='/cart_items'").eq(2).click()
+    cy.get('button[data-cart-submit]').click()
+    cy.contains('Оформление заказа')
+  })  
+})

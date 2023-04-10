@@ -1,0 +1,9 @@
+{
+  "positiveCase":{
+    "mail": "german@dolnikov.ru",
+    "password": "iLoveqastudio1"
+  },
+  "negativeCases":{
+
+  }
+}
