@@ -1,8 +1,7 @@
 import { selectors } from "./selectors.json"
 
 export class RefPage {
-  constructor(name) {
-    this.name = name
+  constructor() {
     this.elements = selectors
   }
 
@@ -25,9 +24,14 @@ export class RefPage {
    * Метод проверки присутсвия определенного текста на странице
    * @param {string} content - строка для поиска
    */
-  checkMessage(content) {
+  checkText(content) {
     cy.contains(content).should('be.visible')
   }
+
+  /**
+   * Проверка видимости найденного элемента
+   * @param {*} getter - get - метод элемента
+   */
   checkElementVisible(getter) {
     this[getter].should('be.visible')
   }
@@ -57,7 +61,7 @@ export class RefPage {
    * @param {String} getter - get-метод элемента
    * @param {Number} index - порядковый индекс проверяемого элемента
    */
-  clickBtn(getter, index = 0) {
+  buttonClick(getter, index = 0) {
     this[getter].eq(index).scrollIntoView().click()
   }
 }
