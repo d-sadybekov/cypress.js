@@ -2,6 +2,7 @@
     "selectors":{ 
         "input_Field": ".form > input",
         "button": ".form > button",
-        "exitButton": ".exitButton"
+        "exitMessageButton": "#exitMessageButton",
+        "exitRestoreButton": "#exitRestoreButton"
     }
 }
