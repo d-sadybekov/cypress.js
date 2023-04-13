@@ -11,27 +11,27 @@ export class RefPage {
   get inputField() {
     return cy.get(this.elements.input_Field)
   }
-
   get btn() {
     return cy.get(this.elements.button)
   }
+  get exitMessageBtn() {
+    return cy.get(this.elements.exitMessageButton)
+  }
+  get exitRestoreBtn() {
+    return cy.get(this.elements.exitRestoreButton)
+  }
 
-  get exitBtn() {
-    return cy.get(this.elements.exitButton)
-  }
   /**
-   * Метод проверки присутсвия определенного текста в элементе
-   * @param {string} getter - get - метод элемента
+   * Метод проверки присутсвия определенного текста на странице
    * @param {string} content - строка для поиска
-   * @param {number} index - порядковый индекс проверяемого элемента
    */
-  chekContent(getter, content = "", index = 0) {
-    if (getter == "page") {
-      cy.contains(content)
-    } else {
-      this[getter].eq(index).contains(content)
-    }
+  checkMessage(content) {
+    cy.contains(content).should('be.visible')
   }
+  checkElementVisible(getter) {
+    this[getter].should('be.visible')
+  }
+  
   /**
    * Метод клика по кнопке, Которая должна содержать опредленный текст
    * @param {string} getter - get - метод элемента
